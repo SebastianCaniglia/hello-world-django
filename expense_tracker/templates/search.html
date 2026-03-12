@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Search Expenses</h2>
+<form method="get">
+    {{ form.as_p }}
+    <button type="submit">Search</button>
+</form>
+
+{% if results %}
+<h3>Results</h3>
+<table>
+    <tr><th>Date</th><th>Description</th><th>Amount</th></tr>
+    {% for expense in results %}
+        <tr><td>{{ expense.date }}</td><td>{{ expense.description }}</td><td>${{ expense.amount }}</td></tr>
+    {% endfor %}
+</table>
+{% endif %}
+{% endblock %}
